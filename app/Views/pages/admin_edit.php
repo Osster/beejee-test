@@ -13,7 +13,7 @@ require Kernel::ViewsDir("header.php");
 				<input
 						type="text"
 						class="form-control <?= $errors["user_name"] ? 'is-invalid' : '' ?>" id="userName" placeholder="Alex"
-						name="user_name" value="<?= $form_data["user_name"] ?>">
+						name="user_name" value="<?= $form_data["user_name"] ?>" readonly>
           <? if ($errors["user_name"]) : ?>
 						<div class="invalid-feedback">
                 <?= implode('<br/>', $errors["user_name"]) ?>
@@ -23,7 +23,7 @@ require Kernel::ViewsDir("header.php");
 			<div class="mb-3">
 				<label for="userEmail" class="form-label">Email</label>
 				<input type="email" class="form-control <?= $errors["user_email"] ? 'is-invalid' : '' ?>" id="userEmail"
-				       placeholder="name@example.com" name="user_email" value="<?= $form_data["user_email"] ?>">
+				       placeholder="name@example.com" name="user_email" value="<?= $form_data["user_email"] ?>" readonly>
           <? if ($errors["user_email"]) : ?>
 						<div class="invalid-feedback">
                 <?= implode('<br/>', $errors["user_email"]) ?>

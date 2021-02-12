@@ -42,8 +42,6 @@ class AdminHomeController extends Controller
         $task = Task::findOrFail($id);
 
         $formData = [
-            "user_name" => strip_tags($request->get('user_name', "")),
-            "user_email" => strip_tags($request->get("user_email", "")),
             "content" => strip_tags($request->get("content", "")),
             "state" => (bool) $request->get("state", false),
         ];
