@@ -82,9 +82,13 @@ class Kernel
     {
         try {
 
-            self::$env = Dotenv::createUnsafeImmutable(dirname(__DIR__, 1), '.env');
+            if (file_exists(dirname(__DIR__, 1) . '/.env')) {
 
-            self::$env->load();
+                self::$env = Dotenv::createUnsafeImmutable(dirname(__DIR__, 1), '.env');
+
+                self::$env->load();
+
+            }
 
         } catch (\Exception $e) {
 
