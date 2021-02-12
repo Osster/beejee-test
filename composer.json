@@ -1,0 +1,26 @@
+{
+    "name": "osster/beejee-test",
+    "description": "Test app",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Osster",
+            "email": "alex.osster.web@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^7.30",
+        "vlucas/phpdotenv": "^5.3",
+        "illuminate/http": "^7.30",
+        "monolog/monolog": "^2.2",
+        "izniburak/router": "^2.2",
+        "illuminate/pagination": "^7.30",
+        "rakit/validation": "^1.4"
+    },
+  "autoload": {
+    "classmap": [
+      "app"
+    ]
+  }
+}
