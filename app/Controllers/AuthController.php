@@ -24,8 +24,11 @@ class AuthController extends Controller
 
         $messages = Kernel::$session->getFlashBag()->get('notice', []);
 
+        $error_messages = Kernel::$session->getFlashBag()->get('error', []);
+
         return $this->render("pages/auth_login.php", [
             "messages" => $messages,
+            "error_messages" => $error_messages,
         ]);
     }
 
@@ -58,9 +61,13 @@ class AuthController extends Controller
 
             return new RedirectResponse(Kernel::route("/admin"));
 
+        } else {
+
+            Kernel::$session->getFlashBag()->set('error', "Пользователь не найден");
+
         }
 
-        return $this->render("pages/auth_login.php", []);
+        return new RedirectResponse(Kernel::route("/login"));
     }
 
     public function registerForm()

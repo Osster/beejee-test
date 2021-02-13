@@ -12,6 +12,7 @@ class InstallController extends Controller
 {
     public function index(): Response
     {
+        Capsule::schema()->drop("users");
 
         Capsule::schema()->create('users', function (Blueprint $table) {
 
@@ -25,6 +26,8 @@ class InstallController extends Controller
 
         });
 
+        Capsule::schema()->drop("tasks");
+
         Capsule::schema()->create('tasks', function (Blueprint $table) {
 
             $table->increments('id');
@@ -36,6 +39,8 @@ class InstallController extends Controller
             $table->string('content');
 
             $table->boolean('state')->default(false);
+
+            $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();
 

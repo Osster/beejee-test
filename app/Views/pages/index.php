@@ -38,16 +38,19 @@ $links = [
 				<a href="<?= $links["id"] ?>">ID</a>
 			</th>
 			<th scope="col">
-				<a href="<?= $links["user_name"] ?>">Name</a>
+				<a href="<?= $links["user_name"] ?>">Имя</a>
 			</th>
 			<th scope="col">
 				<a href="<?= $links["user_email"] ?>">E-mail</a>
 			</th>
 			<th scope="col">
-				<a href="<?= $links["content"] ?>">Content</a>
+				<a href="<?= $links["content"] ?>">Задача</a>
 			</th>
 			<th scope="col">
-				<a href="<?= $links["state"] ?>">State</a>
+				<a href="<?= $links["state"] ?>">Статус</a>
+			</th>
+			<th scope="col">
+				Отредактировано администратором
 			</th>
 		</tr>
 		</thead>
@@ -58,7 +61,8 @@ $links = [
 				<td><?= $task->user_name ?></td>
 				<td><?= $task->user_email ?></td>
 				<td><?= $task->content ?></td>
-				<td><?= $task->state ? "Done" : "Pending" ?></td>
+				<td><?= $task->state ? "Выполнено" : "Ожидает проверки" ?></td>
+				<td><?= !is_null($task->updated_by) ? "Да" : "" ?></td>
 			</tr>
     <? endforeach; ?>
 		</tbody>

@@ -53,6 +53,17 @@ class AdminHomeController extends Controller
 
         if ($task->validate()) {
 
+            if ($task instanceof Task) {
+                $dirty = $task->getDirty();
+
+                if (isset($dirty["content"])) {
+
+                    $task->updated_by = Kernel::user()->id;
+
+                }
+
+            }
+
             $task->save();
 
             Kernel::$session->getFlashBag()->add("notice", "Задача сохранена");

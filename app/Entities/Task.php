@@ -9,6 +9,7 @@ class Task extends Entity
         "user_email",
         "content",
         "state",
+        "updated_by",
     ];
 
     protected $casts = [
