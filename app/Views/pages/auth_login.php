@@ -5,6 +5,13 @@ require Kernel::ViewsDir("header.php");
 ?>
 
     <h1 class="display-1">Войти</h1>
+
+		<? foreach ($messages as $message) :?>
+			<div class="alert alert-primary" role="alert">
+		      <?= $message ?>
+			</div>
+		<? endforeach; ?>
+
     <div class="row">
         <div class="col-12">
             <form action="/login" method="post" class="row g-3">

@@ -21,11 +21,13 @@ class AdminHomeController extends Controller
             ->paginate(5, ["*"], "p", $request->get("p", 1))
             ->setPath($request->getUri());
 
+        $messages = Kernel::$session->getFlashBag()->get('notice', []);
 
         return $this->render("pages/admin_index.php", [
             "title" => getenv("APP_NAME"),
             "items" => $tasks,
             "sort" => $sort,
+            "messages" => $messages,
         ]);
     }
 
@@ -53,6 +55,8 @@ class AdminHomeController extends Controller
 
             $task->save();
 
+            Kernel::$session->getFlashBag()->add("notice", "Задача сохранена");
+
             return new RedirectResponse(Kernel::route("/admin"));
 
         } else {
@@ -71,6 +75,8 @@ class AdminHomeController extends Controller
         $task = Task::findOrFail($id);
 
         $task->delete();
+
+        Kernel::$session->getFlashBag()->add("notice", "Задача удалена");
 
         return new RedirectResponse(Kernel::route("/admin"));
     }

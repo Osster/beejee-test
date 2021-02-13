@@ -23,6 +23,12 @@ $links = [
 	</div>
 </div>
 
+<? foreach ($messages as $message) :?>
+	<div class="alert alert-primary" role="alert">
+      <?= $message ?>
+	</div>
+<? endforeach; ?>
+
 <div class="row">
 	<table class="table">
 		<thead>

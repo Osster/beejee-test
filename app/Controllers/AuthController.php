@@ -22,7 +22,11 @@ class AuthController extends Controller
 
         }
 
-        return $this->render("pages/auth_login.php", []);
+        $messages = Kernel::$session->getFlashBag()->get('notice', []);
+
+        return $this->render("pages/auth_login.php", [
+            "messages" => $messages,
+        ]);
     }
 
     public function login(Request $request): Response
@@ -89,6 +93,8 @@ class AuthController extends Controller
         $user->pass = $data["pass_hash"];
 
         $user->save();
+
+        Kernel::$session->getFlashBag()->add("notice", "Пользователь '{$data['name']}' зарегистрирован");
 
         return new RedirectResponse(Kernel::route("/login"));
     }

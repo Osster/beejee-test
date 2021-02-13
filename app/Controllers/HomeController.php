@@ -22,10 +22,13 @@ class HomeController extends Controller
             ->paginate(3, ["*"], "p", $request->get("p", 1))
             ->setPath($request->getUri());
 
+        $messages = Kernel::$session->getFlashBag()->get('notice', []);
+
         return $this->render("pages/index.php", [
             "title" => getenv("APP_NAME"),
             "items" => $tasks,
             "sort" => $sort,
+            "messages" => $messages,
         ]);
     }
 
@@ -48,6 +51,8 @@ class HomeController extends Controller
         if ($task->validate()) {
 
             $task->save();
+
+            Kernel::$session->getFlashBag()->add("notice", "Задача создана");
 
             return new RedirectResponse(Kernel::route("/"));
 
