@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Kernel;
 use Illuminate\Database\Schema\Blueprint;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,6 +53,6 @@ class InstallController extends Controller
         ]);
 
 
-        return new RedirectResponse("/");
+        return new RedirectResponse(Kernel::route("/"));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Entities\Task;
+use App\Kernel;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,7 +49,7 @@ class HomeController extends Controller
 
             $task->save();
 
-            return new RedirectResponse("/");
+            return new RedirectResponse(Kernel::route("/"));
 
         } else {
 

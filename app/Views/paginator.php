@@ -16,12 +16,12 @@ if ($items->hasPages()) :
         <ul class="pagination">
             <!-- Previous Page Link -->
             <? if ($items->onFirstPage()) : ?>
-                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                <li class="page-item disabled" aria-disabled="true" aria-label="Пред">
                     <span class="page-link" aria-hidden="true">&lsaquo;</span>
                 </li>
             <? else : ?>
                 <li class="page-item">
-                    <a class="page-link" href="<?= $items->previousPageUrl() ?>" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                    <a class="page-link" href="<?= $items->previousPageUrl() ?>" rel="prev" aria-label="Пред">&lsaquo;</a>
                 </li>
             <? endif; ?>
 
@@ -47,10 +47,10 @@ if ($items->hasPages()) :
             <!-- Next Page Link -->
             <? if ($items->hasMorePages()) : ?>
                 <li class="page-item">
-                    <a class="page-link" href="<?= $items->nextPageUrl() ?>" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                    <a class="page-link" href="<?= $items->nextPageUrl() ?>" rel="next" aria-label="След">&rsaquo;</a>
                 </li>
             <? else : ?>
-                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                <li class="page-item disabled" aria-disabled="true" aria-label="След">
                     <span class="page-link" aria-hidden="true">&rsaquo;</span>
                 </li>
             <? endif; ?>

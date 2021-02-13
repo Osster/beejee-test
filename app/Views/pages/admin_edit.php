@@ -7,7 +7,7 @@ require Kernel::ViewsDir("header.php");
 <h1 class="display-1">Редактирование задачи</h1>
 <div class="row">
 	<div class="col-12">
-		<form action="/admin/store/<?= $form_data["id"] ?>" method="post" class="row g-3">
+		<form action="<?= Kernel::route("/admin/store/{$form_data["id"]}") ?>" method="post" class="row g-3">
 			<div class="mb-3">
 				<label for="userName" class="form-label">Имя</label>
 				<input
@@ -54,7 +54,7 @@ require Kernel::ViewsDir("header.php");
 			</div>
 			<div class="mb-3">
 				<button type="submit" class="btn btn-primary">Сохранить</button>
-				<a href="/" class="btn">Отмена</a>
+				<a href="<?= Kernel::route("/") ?>" class="btn">Отмена</a>
 			</div>
 		</form>
 	</div>

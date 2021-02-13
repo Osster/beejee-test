@@ -78,6 +78,15 @@ class Kernel
         }
     }
 
+    public static function route($path = "")
+    {
+        $appDir = getenv('APP_DIR');
+
+        $route = preg_replace("/\/\//", "/", "{$appDir}{$path}");
+
+        return $route;
+    }
+
     protected static function initEnv()
     {
         try {

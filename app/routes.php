@@ -7,30 +7,30 @@ $router = Kernel::$router;
 
 if ($router instanceof Router) {
 
-    $router->get("/", "HomeController@index");
+    $router->get(Kernel::route("/"), "HomeController@index");
 
-    $router->get("/create/", "HomeController@edit");
+    $router->get(Kernel::route("/create"), "HomeController@edit");
 
-    $router->post("/store/", "HomeController@store");
+    $router->post(Kernel::route("/store"), "HomeController@store");
 
-    $router->get("/login/", "AuthController@loginForm");
+    $router->get(Kernel::route("/login"), "AuthController@loginForm");
 
-    $router->post("/login/", "AuthController@login");
+    $router->post(Kernel::route("/login"), "AuthController@login");
 
-    $router->get("/register/", "AuthController@registerForm");
+    $router->get(Kernel::route("/register"), "AuthController@registerForm");
 
-    $router->post("/register/", "AuthController@register");
+    $router->post(Kernel::route("/register"), "AuthController@register");
 
-    $router->get("/logout/", "AuthController@logout");
+    $router->get(Kernel::route("/logout"), "AuthController@logout");
 
-    $router->get("/install/", "InstallController@index");
+    $router->get(Kernel::route("/install"), "InstallController@index");
 
-    $router->get("/admin", "AdminHomeController@index", ['before' => 'AuthMiddleware']);
+    $router->get(Kernel::route("/admin"), "AdminHomeController@index", ['before' => 'AuthMiddleware']);
 
-    $router->get("/admin/edit/:id", "AdminHomeController@edit", ['before' => 'AuthMiddleware']);
+    $router->get(Kernel::route("/admin/edit/:id"), "AdminHomeController@edit", ['before' => 'AuthMiddleware']);
 
-    $router->post("/admin/store/:id", "AdminHomeController@store", ['before' => 'AuthMiddleware']);
+    $router->post(Kernel::route("/admin/store/:id"), "AdminHomeController@store", ['before' => 'AuthMiddleware']);
 
-    $router->post("/admin/delete/:id", "AdminHomeController@delete", ['before' => 'AuthMiddleware']);
+    $router->post(Kernel::route("/admin/delete/:id"), "AdminHomeController@delete", ['before' => 'AuthMiddleware']);
 
 }

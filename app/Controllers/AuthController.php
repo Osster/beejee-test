@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         if(Kernel::isLoggedIn()) {
 
-            return new RedirectResponse("/");
+            return new RedirectResponse(Kernel::route("/"));
 
         }
 
@@ -52,7 +52,7 @@ class AuthController extends Controller
 
             Kernel::$session->set("name", $currentUser->name);
 
-            return new RedirectResponse("/admin");
+            return new RedirectResponse(Kernel::route("/admin"));
 
         }
 
@@ -90,7 +90,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return new RedirectResponse("/login");
+        return new RedirectResponse(Kernel::route("/login"));
     }
 
     public function logout()
@@ -101,6 +101,6 @@ class AuthController extends Controller
 
         Kernel::$session->remove("name");
 
-        return new RedirectResponse("/");
+        return new RedirectResponse(Kernel::route("/"));
     }
 }

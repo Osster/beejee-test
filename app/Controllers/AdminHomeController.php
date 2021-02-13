@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Entities\Task;
+use App\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,7 +53,7 @@ class AdminHomeController extends Controller
 
             $task->save();
 
-            return new RedirectResponse("/admin");
+            return new RedirectResponse(Kernel::route("/admin"));
 
         } else {
 
@@ -71,6 +72,6 @@ class AdminHomeController extends Controller
 
         $task->delete();
 
-        return new RedirectResponse("/admin");
+        return new RedirectResponse(Kernel::route("/admin"));
     }
 }

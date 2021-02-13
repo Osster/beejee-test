@@ -32,7 +32,7 @@ require Kernel::ViewsDir("header.php");
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Войти</button>
-                    <a href="/register" class="btn">Регистрация</a>
+                    <a href="<?= Kernel::route("/register") ?>" class="btn">Регистрация</a>
                 </div>
             </form>
         </div>

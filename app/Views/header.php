@@ -23,7 +23,7 @@ use App\Kernel;
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-			<a class="navbar-brand" href="/">Task List</a>
+			<a class="navbar-brand" href="<?= Kernel::route("/") ?>">Task List</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -32,10 +32,10 @@ use App\Kernel;
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<? if (!Kernel::isLoggedIn()) : ?>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="/login">Login</a>
+							<a class="nav-link active" aria-current="page" href="<?= Kernel::route("/login") ?>">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/register">Register</a>
+							<a class="nav-link" href="<?= Kernel::route("/register") ?>">Register</a>
 						</li>
 						<? else : ?>
 						<li class="nav-item dropdown">
@@ -43,9 +43,9 @@ use App\Kernel;
 								<?= Kernel::user()->name?>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="/admin">Dispatch board</a></li>
+								<li><a class="dropdown-item" href="<?= Kernel::route("/admin") ?>">Dispatch board</a></li>
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="/logout">Logout</a></li>
+								<li><a class="dropdown-item" href="<?= Kernel::route("/logout") ?>">Logout</a></li>
 							</ul>
 						</li>
 						<? endif; ?>

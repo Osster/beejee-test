@@ -6,11 +6,11 @@ require Kernel::ViewsDir("header.php");
 
 <?
 $links = [
-    "id" => "?page={$items->currentPage()}&sort_col=id&" . ($sort[0] == "id" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}"),
-    "user_name" => "?page={$items->currentPage()}&sort_col=user_name&" . ($sort[0] == "user_name" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}"),
-    "user_email" => "?page={$items->currentPage()}&sort_col=user_email&" . ($sort[0] == "user_email" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}"),
-    "content" => "?page={$items->currentPage()}&sort_col=content&" . ($sort[0] == "content" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}"),
-    "state" => "?page={$items->currentPage()}&sort_col=state&" . ($sort[0] == "state" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}"),
+    "id" => "?sort_col=id&" . ($sort[0] == "id" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}") . "&p={$items->currentPage()}",
+    "user_name" => "?sort_col=user_name&" . ($sort[0] == "user_name" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}") . "&p={$items->currentPage()}",
+    "user_email" => "?sort_col=user_email&" . ($sort[0] == "user_email" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}") . "&p={$items->currentPage()}",
+    "content" => "?sort_col=content&" . ($sort[0] == "content" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}") . "&p={$items->currentPage()}",
+    "state" => "?sort_col=state&" . ($sort[0] == "state" ? ($sort[1] != "ASC" ? "sort_dir=ASC" : "sort_dir=DESC") : "sort_dir={$sort[1]}") . "&p={$items->currentPage()}",
 ];
 ?>
 
@@ -19,7 +19,7 @@ $links = [
 		<h1 class="display-1">Dispatch board</h1>
 	</div>
 	<div class="col-6 d-flex justify-content-end align-items-center">
-		<a href="/create" class="btn btn-primary">Создать задачу</a>
+		<a href="<?= Kernel::route("/create") ?>" class="btn btn-primary">Создать задачу</a>
 	</div>
 </div>
 
@@ -54,7 +54,7 @@ $links = [
 				<td><?= $task->content ?></td>
 				<td><?= $task->state ? "Done" : "Pending" ?></td>
 				<td class="d-flex justify-content-end">
-					<a href="/admin/edit/<?= $task->id ?>" class="btn btn-sm btn-warning">Edit</a>
+					<a href="<?= Kernel::route("/admin/edit/{$task->id}") ?>" class="btn btn-sm btn-warning">Edit</a>
 					<a href="#" class="btn btn-sm btn-danger ms-2 btn-delete" data-id="<?= $task->id ?>">Delete</a>
 				</td>
 			</tr>
@@ -80,7 +80,7 @@ $links = [
 					e.preventDefault();
 					if (confirm("Удалить задачу?")) {
 						const form = document.getElementById('hidden-form');
-						form.setAttribute('action', `/admin/delete/${e.target.dataset["id"]}`);
+						form.setAttribute('action', `<?= Kernel::route("/admin/delete") ?>/${e.target.dataset["id"]}`);
 						form.submit();
 						form.setAttribute('action', ``);
 					}
