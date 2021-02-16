@@ -58,7 +58,7 @@ class HomeController extends Controller
 
         } else {
 
-            return $this->render("pages/index_create.php", [
+            return $this->render("pages/index_edit.php", [
                 "form_data" => $formData,
                 "errors" => $task->getErrors(),
             ]);
