@@ -12,7 +12,7 @@ class InstallController extends Controller
 {
     public function index(): Response
     {
-        Capsule::schema()->drop("users");
+        Capsule::schema()->dropIfExists("users");
 
         Capsule::schema()->create('users', function (Blueprint $table) {
 
@@ -26,7 +26,7 @@ class InstallController extends Controller
 
         });
 
-        Capsule::schema()->drop("tasks");
+        Capsule::schema()->dropIfExists("tasks");
 
         Capsule::schema()->create('tasks', function (Blueprint $table) {
 
